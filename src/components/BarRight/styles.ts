@@ -2,12 +2,18 @@ import styled from 'styled-components'
 import { breakpoints, colors } from '../../styles'
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 32px;
-  background-color: ${colors.black};
-  z-index: 90;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  padding: 0 32px;
+  border-left: 1px solid ${colors.gray};
+  background-color: ${colors.white};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 
 export const Content = styled.div`

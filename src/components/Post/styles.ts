@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { colors, breakpoints } from '../../styles'
 
 export const MainContent = styled.div`
   max-width: 600px;
@@ -38,32 +38,33 @@ export const TopBar = styled.div`
 `
 
 export const Content = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  background: ${colors.black};
-  color: ${colors.white};
-`
-
-export const Section = styled.div`
   padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
+  border-bottom: 1px solid ${colors.gray};
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 12px 8px;
+  }
 
   &.display {
-    display: flex;
+    @media (max-width: ${breakpoints.mobile}) {
+      gap: 8px;
+    }
   }
-  &.align {
-    align-items: center;
+`
+
+export const Section = styled.section`
+  margin-bottom: 12px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-bottom: 8px;
   }
-  &.padding {
-    padding: 16px 0;
-  }
+
   &.padding-tp-bt {
     padding: 8px 0;
+
+    @media (max-width: ${breakpoints.mobile}) {
+      padding: 4px 0;
+    }
   }
 `
 
@@ -76,6 +77,14 @@ export const Meta = styled.div`
   p {
     margin: 0;
     color: ${colors.white};
+    font-size: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: ${breakpoints.mobile}) {
+      font-size: 14px;
+    }
   }
   .date {
     color: ${colors.gray};
@@ -85,24 +94,34 @@ export const Meta = styled.div`
 
 export const Actions = styled.ul`
   display: flex;
-  align-items: center;
   gap: 24px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: ${colors.white};
+  margin-top: 12px;
 
   li {
     display: flex;
     align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    gap: 8px;
+    color: ${colors.darkGray};
+    font-size: 14px;
+
+    img {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
   }
 
-  img {
-    width: 20px;
-    height: 20px;
+  @media (max-width: ${breakpoints.mobile}) {
+    gap: 16px;
+
+    li {
+      font-size: 12px;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 `
 
@@ -111,6 +130,11 @@ export const InputComment = styled.div`
   align-items: center;
   width: 100%;
   gap: 8px;
+  margin-left: 12px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 8px;
+  }
 
   textarea {
     flex: 1;
@@ -124,16 +148,35 @@ export const InputComment = styled.div`
     resize: none;
     min-height: 32px;
     max-height: 120px;
+
+    @media (max-width: ${breakpoints.mobile}) {
+      padding: 8px;
+      font-size: 14px;
+    }
   }
 
   button {
     min-width: 100px;
     font-weight: 700;
+
+    @media (max-width: ${breakpoints.mobile}) {
+      min-width: 80px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
   }
 `
 
-export const CommentContent = styled.div`
+export const CommentContent = styled.p`
   flex: 1;
+  margin-left: 12px;
+  color: ${colors.white};
+  margin-top: 8px;
+  display: block;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 8px;
+  }
 
   .display {
     display: flex;
@@ -148,6 +191,7 @@ export const CommentContent = styled.div`
 
   .padding-left {
     padding-left: 0;
+    color: ${colors.white};
   }
 
   .margin-tp {

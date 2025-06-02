@@ -179,7 +179,9 @@ const Post = () => {
                 <ProfileName>{comment.username}</ProfileName>
                 <p className="date">{'· ' + formatRelativeDate(comment.created_at)}</p>
               </div>
-              <p className="padding-left margin-tp">{comment.content}</p>
+              <S.CommentContent className="padding-left margin-tp">
+                {comment.content}
+              </S.CommentContent>
             </S.Section>
           </S.Content>
         )

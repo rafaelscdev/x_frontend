@@ -121,6 +121,7 @@ export const ProfileAvatar = styled.span`
 export const ProfileName = styled.span`
   margin-left: 8px;
   font-weight: 700;
+  color: ${colors.white};
 `
 
 export const MainContent = styled.div`
@@ -130,6 +131,17 @@ export const MainContent = styled.div`
   border-left: 1px solid ${colors.gray};
   border-right: 1px solid ${colors.gray};
   flex-direction: column;
+  margin: 0 auto;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 0 12px;
+  }
 `
 
 export const ModalWrapper = styled.div`

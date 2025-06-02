@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# X Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Um clone moderno do Twitter (X) desenvolvido em React, com foco em responsividade, usabilidade e experiência de usuário.
 
-## Available Scripts
+- **Repositório remoto:** [https://github.com/rafaelscdev/x_frontend](https://github.com/rafaelscdev/x_frontend)
+- **Consome a API de backend própria** (autenticação, posts, comentários, etc)
 
-In the project directory, you can run:
+## Funcionalidades
+- Feed de posts responsivo (desktop, tablet e mobile)
+- Página de post individual com comentários
+- Sidebar com navegação (menu hamburguer no mobile)
+- Login, cadastro e autenticação de usuário
+- Postar, comentar, curtir e seguir usuários
+- Logout seguro
 
-### `npm start`
+## Tecnologias Utilizadas
+- React + TypeScript
+- Styled-components
+- Redux Toolkit (RTK Query)
+- React Router DOM
+- Vercel (deploy)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Como rodar localmente
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/rafaelscdev/x_frontend.git
+   cd x_frontend_new
+   ```
+2. Instale as dependências:
+   ```sh
+   npm install
+   ```
+3. Rode o projeto:
+   ```sh
+   npm start
+   ```
+4. Acesse [http://localhost:3000](http://localhost:3000)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Estrutura de Pastas
+```
+x_frontend_new/
+├── src/
+│   ├── components/      # Componentes reutilizáveis (BarLeft, BarRight, Post, Posts, etc)
+│   ├── pages/           # Páginas principais (Feed, PostPage, Entry)
+│   ├── styles/          # Estilos globais e temas
+│   ├── services/        # Serviços de API (auth, posts)
+│   └── utils/           # Funções utilitárias
+├── public/              # Arquivos estáticos
+├── package.json         # Dependências e scripts
+└── README.md            # Este arquivo
+```
 
-### `npm test`
+## Deploy
+O projeto está hospedado na Vercel e faz deploy automático a cada push na branch `main`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contribuição
+Pull requests são bem-vindos! Para contribuir, abra uma issue ou envie um PR.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+Projeto desenvolvido para fins educacionais e de portfólio.

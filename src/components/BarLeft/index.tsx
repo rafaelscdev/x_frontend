@@ -26,6 +26,7 @@ import Community from '../Community'
 const BarLeft = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [modalContent, setModalContent] = useState('')
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
   const { data: user } = useGetCurrentUserQuery()
   const navigate = useNavigate()
 
@@ -47,6 +48,19 @@ const BarLeft = () => {
   const handleTopClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  const mobileMenuItems = [
+    { icon: magnifier, label: 'Explorar' },
+    { icon: bell, label: 'Notificações' },
+    { icon: letter, label: 'Mensagens' },
+    { icon: grok, label: 'Grok' },
+    { icon: tape, label: 'Itens salvos' },
+    { icon: communit, label: 'Comunidade' },
+    { icon: cloud, label: 'Premium' },
+    { icon: ray, label: 'Organizações Ve...' },
+    { icon: profile, label: 'Perfil' },
+    { icon: more, label: 'Mais' }
+  ]
 
   return (
     <>
@@ -75,10 +89,6 @@ const BarLeft = () => {
             <img src={tape} alt="itens salvos" />
             <S.MenuLabel>Itens salvos</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem className="community-button" onClick={() => openModal('community')}>
-            <img src={communit} alt="comunidade" />
-            <S.MenuLabel>Comunidade</S.MenuLabel>
-          </S.MenuItem>
           <S.MenuItem className="disable-item-mobile">
             <img src={cloud} alt="premium" />
             <S.MenuLabel>Premium</S.MenuLabel>
@@ -98,7 +108,7 @@ const BarLeft = () => {
         </S.Menu>
         {user && (
           <S.Profile>
-            <div>
+            <div className="profile-desktop">
               <UserAvatar />
               <ProfileName>{user.username}</ProfileName>
             </div>
@@ -111,7 +121,32 @@ const BarLeft = () => {
           </S.Profile>
         )}
       </S.Header>
-
+      {user && (
+        <S.MobileNavBar>
+          <S.MobileNavButton onClick={() => setShowMobileMenu((v) => !v)}>
+            <UserAvatar />
+          </S.MobileNavButton>
+          <S.MobileNavButton onClick={() => navigate('/feed')} aria-label="Página Inicial">
+            <img src={home} alt="Página Inicial" style={{ width: 28, height: 28 }} />
+          </S.MobileNavButton>
+          <S.MobileNavButton onClick={handleLogout} aria-label="Logout">
+            <img src={closeUser} alt="logout" style={{ width: 28, height: 28 }} />
+          </S.MobileNavButton>
+        </S.MobileNavBar>
+      )}
+      {showMobileMenu && (
+        <S.MobileMenu>
+          <button className="close" onClick={() => setShowMobileMenu(false)}>
+            <span style={{ fontSize: 28 }}>☰</span>
+          </button>
+          {mobileMenuItems.map((item) => (
+            <div className="menu-item" key={item.label}>
+              <img src={item.icon} alt={item.label} />
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </S.MobileMenu>
+      )}
       {isOpenModal && (
         <ModalWrapper>
           <ModalContent>

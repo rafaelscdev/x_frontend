@@ -1,15 +1,21 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { breakpoints } from '../../styles'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   background-color: ${colors.black};
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100vw;
+    overflow-x: hidden;
+  }
 `
 
 export const Content = styled.div`
@@ -17,12 +23,18 @@ export const Content = styled.div`
   flex-direction: column;
   gap: 32px;
   border-right: 1px solid ${colors.darkGray};
-  padding-right: 32px;
+  padding: 0 32px;
   min-height: 100vh;
   background-color: ${colors.black};
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 100%;
+    padding: 0 16px;
+    border-right: none;
+  }
 `
 
 export const Header = styled.div`

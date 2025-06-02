@@ -1,29 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import { colors } from '../../styles'
-import Button from '../../components/Button'
-import Community from '../../components/Community'
+import BarLeft from '../../components/BarLeft'
+import BarRight from '../../components/BarRight'
 import Posts from '../../components/Posts'
-import * as S from './styles'
+import { Container, Content } from '../Feed/styles'
 
 const Feed = () => {
-  const navigate = useNavigate()
-
   return (
-    <S.Container>
-      <S.Content>
-        <S.Header>
-          <S.Title>Página Inicial</S.Title>
-        </S.Header>
-
-        <S.Main>
-          <Posts />
-        </S.Main>
-      </S.Content>
-
-      <S.Sidebar>
-        <Community />
-      </S.Sidebar>
-    </S.Container>
+    <Container>
+      <BarLeft />
+      <Content>
+        <h2 style={{ margin: '24px 0 16px 0', fontWeight: 700, fontSize: 24, color: '#fff' }}>
+          Página Inicial
+        </h2>
+        <Posts />
+      </Content>
+      <BarRight />
+    </Container>
   )
 }
 
