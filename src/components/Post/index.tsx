@@ -25,8 +25,6 @@ import arrow from '../../assets/arrow.svg'
 import * as S from './styles'
 import { Loader2 } from '../Loaders'
 
-const backendUrl = 'http://127.0.0.1:8000'
-
 const Post = () => {
   const [text, setText] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -163,7 +161,8 @@ const Post = () => {
               value={text}
               onInput={handleChange}
               placeholder="Postar sua resposta"
-              maxLength={220}></textarea>
+              maxLength={220}
+            />
             <Button
               onClick={handlePostComment}
               type="button"
@@ -182,7 +181,17 @@ const Post = () => {
         return (
           <S.Content className="display" key={comment.id}>
             <S.Section className="padding-tp-bt">
-              <ProfileAvatar style={{ backgroundColor: avatarColor }}>{firstLetter}</ProfileAvatar>
+              {comment.profile_image ? (
+                <img
+                  src={comment.profile_image}
+                  alt="Avatar"
+                  style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }}
+                />
+              ) : (
+                <ProfileAvatar style={{ backgroundColor: avatarColor }}>
+                  {firstLetter}
+                </ProfileAvatar>
+              )}
             </S.Section>
             <S.Section className="padding-tp-bt">
               <div className="display">

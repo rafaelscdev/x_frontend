@@ -22,6 +22,7 @@ export interface PostResponse {
 }
 
 export interface PostComment {
+  profile_image: string | undefined
   id: number
   username: string
   user: number
