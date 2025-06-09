@@ -16,8 +16,6 @@ import {
   type Post
 } from '../../services/posts'
 
-const backendUrl = 'http://127.0.0.1:8000'
-
 const Posts = () => {
   const navigate = useNavigate()
   const [text, setText] = useState('')
@@ -119,13 +117,7 @@ const Posts = () => {
             <S.Sections className="width-profile">
               {post.profile_image ? (
                 <img
-                  src={
-                    post.profile_image
-                      ? (post.profile_image.startsWith('http')
-                          ? post.profile_image
-                          : post.profile_image)
-                      : '/default-avatar.png'
-                  }
+                  src={post.profile_image ? post.profile_image : '/default-avatar.png'}
                   alt="Avatar"
                   style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
                 />

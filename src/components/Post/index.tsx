@@ -88,11 +88,7 @@ const Post = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             {post.profile_image ? (
               <img
-                src={
-                  post.profile_image.startsWith('http')
-                    ? post.profile_image
-                    : backendUrl + post.profile_image
-                }
+                src={post.profile_image ? post.profile_image : '/default-avatar.png'}
                 alt="Avatar"
                 style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
               />
