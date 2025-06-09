@@ -25,6 +25,8 @@ import arrow from '../../assets/arrow.svg'
 import * as S from './styles'
 import { Loader2 } from '../Loaders'
 
+const backendUrl = 'http://127.0.0.1:8000'
+
 const Post = () => {
   const [text, setText] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -84,9 +86,21 @@ const Post = () => {
       <S.Content>
         <S.Section className="display align" style={{ justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <ProfileAvatar style={{ backgroundColor: postAvatar.avatarColor }}>
-              {postAvatar.firstLetter}
-            </ProfileAvatar>
+            {post.profile_image ? (
+              <img
+                src={
+                  post.profile_image.startsWith('http')
+                    ? post.profile_image
+                    : backendUrl + post.profile_image
+                }
+                alt="Avatar"
+                style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
+              />
+            ) : (
+              <ProfileAvatar style={{ backgroundColor: postAvatar.avatarColor }}>
+                {postAvatar.firstLetter}
+              </ProfileAvatar>
+            )}
             <ProfileName>{post.username}</ProfileName>
           </div>
           {post.user !== undefined && post.is_following !== undefined && (

@@ -18,6 +18,7 @@ export type RegisterResponse = {
   email: string
   first_name: string
   last_name: string
+  profile_image?: string
 }
 
 const authApi = api.injectEndpoints({
@@ -39,11 +40,12 @@ const authApi = api.injectEndpoints({
     getCurrentUser: builder.query<RegisterResponse, void>({
       query: () => 'users/me/'
     }),
-    updateUser: builder.mutation<RegisterResponse, Partial<RegisterResponse>>({
-      query: (body) => ({
+    // Aqui está a correção:
+    updateUser: builder.mutation<RegisterResponse, FormData>({
+      query: (formData) => ({
         url: 'users/me/',
         method: 'PATCH',
-        body
+        body: formData
       }),
       invalidatesTags: ['Users']
     })

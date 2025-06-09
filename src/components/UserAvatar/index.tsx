@@ -7,14 +7,22 @@ const UserAvatar = () => {
   if (!user) {
     return <p>Loading...</p>
   }
-  const userAvatar = getFirstLetterAndColor(user.username, user.id)
 
+  if (user.profile_image) {
+    return (
+      <img
+        src={user.profile_image}
+        alt="Avatar"
+        style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
+      />
+    )
+  }
+
+  const userAvatar = getFirstLetterAndColor(user.username, user.id)
   return (
-    <div>
-      <ProfileAvatar style={{ backgroundColor: userAvatar.avatarColor }}>
-        {userAvatar.firstLetter}
-      </ProfileAvatar>
-    </div>
+    <ProfileAvatar style={{ backgroundColor: userAvatar.avatarColor }}>
+      {userAvatar.firstLetter}
+    </ProfileAvatar>
   )
 }
 

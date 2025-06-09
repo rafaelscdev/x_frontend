@@ -16,6 +16,8 @@ import {
   type Post
 } from '../../services/posts'
 
+const backendUrl = 'http://127.0.0.1:8000'
+
 const Posts = () => {
   const navigate = useNavigate()
   const [text, setText] = useState('')
@@ -115,12 +117,24 @@ const Posts = () => {
         posts?.map((post: Post) => (
           <S.Container key={post.id} onClick={() => handlePostClick(post.id)}>
             <S.Sections className="width-profile">
-              <ProfileAvatar
-                style={{
-                  backgroundColor: getFirstLetterAndColor(post.username, post.user).avatarColor
-                }}>
-                {getFirstLetterAndColor(post.username, post.user).firstLetter}
-              </ProfileAvatar>
+              {post.profile_image ? (
+                <img
+                  src={
+                    post.profile_image.startsWith('http')
+                      ? post.profile_image
+                      : backendUrl + post.profile_image
+                  }
+                  alt="Avatar"
+                  style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
+                />
+              ) : (
+                <ProfileAvatar
+                  style={{
+                    backgroundColor: getFirstLetterAndColor(post.username, post.user).avatarColor
+                  }}>
+                  {getFirstLetterAndColor(post.username, post.user).firstLetter}
+                </ProfileAvatar>
+              )}
             </S.Sections>
             <S.Sections className="text-width">
               <S.Header>

@@ -148,8 +148,8 @@ export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,9 +159,13 @@ export const ModalWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    align-items: flex-start;
   }
 `
 
@@ -173,4 +177,17 @@ export const ModalContent = styled.div`
   max-width: 600px;
   width: 100%;
   z-index: 1001;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 12px 4px 16px 4px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `

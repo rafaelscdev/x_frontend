@@ -11,6 +11,7 @@ export interface Post {
   is_liked: boolean
   is_following?: boolean
   follow_id?: number
+  profile_image?: string
 }
 
 export interface PostResponse {

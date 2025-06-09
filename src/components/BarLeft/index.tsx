@@ -140,7 +140,15 @@ const BarLeft = () => {
             <span style={{ fontSize: 28 }}>☰</span>
           </button>
           {mobileMenuItems.map((item) => (
-            <div className="menu-item" key={item.label}>
+            <div
+              className="menu-item"
+              key={item.label}
+              onClick={() => {
+                if (item.label === 'Perfil') {
+                  openModal('account')
+                  setShowMobileMenu(false)
+                }
+              }}>
               <img src={item.icon} alt={item.label} />
               <span>{item.label}</span>
             </div>
@@ -150,10 +158,7 @@ const BarLeft = () => {
       {isOpenModal && (
         <ModalWrapper>
           <ModalContent>
-            <div>
-              <img src={closeIcon} alt="Fechar aba" onClick={closeModal} />
-            </div>
-            {modalContent === 'account' && <AccountSettings />}
+            {modalContent === 'account' && <AccountSettings onClose={closeModal} />}
             {modalContent === 'community' && <Community />}
           </ModalContent>
           <div className="overlay" onClick={closeModal}></div>
